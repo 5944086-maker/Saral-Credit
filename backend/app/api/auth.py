@@ -9,7 +9,7 @@ from app.models.user import User
 router = APIRouter(prefix="/auth", tags=["authentication"])
 
 
-@router.post("/register", response_model=TokenResponse, status_code=201)
+@router.post("/register", status_code=201)
 async def register(user_data: UserCreate, db: Session = Depends(get_db)):
     """Register new user account"""
     auth_service = AuthService(db)

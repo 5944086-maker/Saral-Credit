@@ -51,6 +51,7 @@ class CreditService:
             requested_amount=application_data.requested_amount,
             loan_purpose=application_data.loan_purpose,
             alternative_data=application_data.alternative_data.dict(),
+            document_links=application_data.document_links or {},
             status="pending"
         )
         
@@ -74,15 +75,6 @@ class CreditService:
             )
             
             self.db.add(credit_score)
-            
-            # Update application status
-            if score_result.credit_score >= 700:
-                application.status = "approved"
-            elif score_result.credit_score >= 600:
-                application.status = "under_review"
-            else:
-                application.status = "rejected"
-            
             self.db.commit()
             self.db.refresh(application)
             
@@ -170,5 +162,12 @@ class CreditService:
             credit_score=credit_score_value,
             risk_category=risk_category,
             created_at=application.created_at,
-            updated_at=application.updated_at
+            updated_at=application.updated_at,
+            full_name=application.full_name,
+            age=application.age,
+            phone_number=application.phone_number,
+            address=application.address,
+            loan_purpose=application.loan_purpose,
+            alternative_data=application.alternative_data,
+            document_links=application.document_links,
         )
