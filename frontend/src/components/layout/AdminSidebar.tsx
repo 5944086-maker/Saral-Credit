@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import { LayoutDashboard, FileText, Users, BarChart3, LogOut } from 'lucide-react'
+import { LayoutDashboard, FileText, Users, LogOut } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
